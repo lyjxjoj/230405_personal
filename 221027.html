@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>함수</title>
+</head>
+<body>
+	<button id="c1">c1</button>
+	<button id="c2">c2</button>
+	<button id="c3">c3</button>
+
+	<script>
+		function c(n) {
+			console.log(n);
+		}
+
+		document.getElementById('c1').addEventListener('click', function(){
+			var btn = document.querySelector('#c2');
+			btn.innerHTML = '뿡2';
+			console.log(btn);
+			// btn.innerText("뿡2");
+		});
+		// document.getElementById('c2').addEventListener('click', function(){
+		// 	c(2);
+		// });
+		// document.getElementById('c3').addEventListener('click', function(){
+		// 	c(3);
+		// });
+
+
+		var a = "d아ㅏㅇ";
+
+	</script>
+
+	<script>
+		function sayHi(){
+			document.write( "Hi! <br>" );
+		}
+		sayHi();
+
+		function sayHello(name) {
+			document.write( `안녕하세요. ${name}님! <br>` )
+		}
+		sayHello('영주');
+
+		function gangCheck(name = 'youngju', count = '1') {
+			document.write(` 안녕하세요. ${name}님! :) <br> `);
+			document.write( `오늘 1일 ${count}깡 하셨습니다. <br><br>` );
+		}
+		gangCheck();
+		gangCheck(3);
+		gangCheck('영주', '3');
+		// 매개변수의 기본 값은 undefined.
+		console.log( undefined == null ); // true
+		console.log( undefined === null ); // false
+
+
+		function addNum(x,y) { // funvtion 함수이름(식별자) (매개변수1, 매개변수2) {}
+			return x + y;
+		}
+		document.write( addNum(2, 3) + "<br>"); // addNum(); 함수에 인수로 2와 3을 전달하여 호출함.
+
+		// returen 반환문
+		function multiNum(x, y) {
+			21231.3
+			123
+			1
+			321
+			1
+			23
+			return x * y; // x와 y를 곱한 결과를 반환함.
+		}
+		var num = multiNum(3, 4); // multiNum()함수가 호출된 후, 그 반환값이 변수 num에 저장됨.
+		document.write( num + "<br>" );
+
+		// 함수의 호출
+		var sum = addNum(3, 5); // 함수 addNum()을 호출하면서, 인수로 3과 5를 전달하고 함수의 호출이 끝난 뒤에는 반환값을 변수 sum에 대입함.
+
+		function getArtist() {
+			return '비 (Rain)'; // 문자열을 return하고있음
+		}
+		console.log ( getArtist() ); // 비 (Rain)
+
+		// 값으로서의 함수
+		function sqr(x) {
+			return x * x
+		}
+		var sqrNum = sqr; // 변수 sqrNum에 함수 sqr을 대입함
+		document.write( sqr(4) + "<br>");  // 함수 sqr을 호출함
+		document.write( sqrNum(4) ); // 변수 sqrNum를 함수처럼 호출함
+
+		function map(f, a) {
+			var result = [], // 빈 배열 생성
+			i;
+			for (i=0; i != a.length; i++)
+				result[i] = f(a[i]);
+				return result;
+		}
+		console.log(map);
+
+
+
+	</script>
+</body>
+</html>

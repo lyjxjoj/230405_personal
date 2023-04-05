@@ -1,0 +1,63 @@
+html,body {background:#ccc;}
+.bold{font-weight:700; font-size:inherit; color:inherit; letter-spacing:inherit; line-height:inherit; vertical-align:baseline; font-family:inherit;}
+
+.wrap {}
+
+.tab_wrap {
+	width:900px;
+	margin:0 auto;
+	padding:100px 0;
+}
+
+/* 메뉴 */
+.tab_menu {font-size:0; line-height:0; margin-bottom:20px;}
+.tab_menu li {
+	position:relative;
+	display:inline-block;
+	width: calc(100% / 3 - 13.5px);
+	text-align:center;
+	background:#fff;
+}
+.tab_menu li:not(:last-child) {margin-right:20px;}
+.tab_menu li .input {position:absolute; top:0; left:0; opacity:0;}
+/* a + b {} :: a 옆의 b {}  */
+.tab_menu li .input:checked + label {background:skyblue;}
+.tab_menu li label {
+	display: block;
+	line-height:70px;
+	cursor:pointer;
+}
+
+/* 리스트 */
+.tab_list {}
+.tab_list>ul {display:none;}
+.tab_list[data-tab="how"] ul.how,
+.tab_list[data-tab="ring"] ul.ring,
+.tab_list[data-tab="delivery"] ul.delivery {display:block;}
+
+.tab_list li {
+	background:#fff;
+}
+.tab_list li:not(:last-child) {margin-bottom:15px;}
+.tab_list .head {}
+.tab_list .head a {
+	padding: 30px;
+}
+
+.tab_list .body {
+	max-height:0;
+	overflow:hidden;
+	transition:all 0.3s ease;
+}
+.tab_list .body.show {
+	max-height:500px;
+}
+
+.tab_list .body p {
+	line-height:24px;
+	padding:30px;
+	border-top:1px solid #ccc;
+}
+
+
+

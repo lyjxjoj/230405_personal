@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+    <button class="btn btn1 m n b v cc">버튼1</button>
+    <button class="btn btn2">버튼2</button>
+    <input type="text" class="inp">
+</div>
+
+    <button class="create">버튼생성</button>
+    <script>
+        // var btn = document.querySelectorAll(".btn");
+        // btn.forEach(function(ele, i){
+        //    ele.addEventListener("click", function(){
+        //     alert("click")
+        //    })
+        // });
+
+        var arr = [1, 2, 3, 4];
+        for(a in arr){
+            a
+        }
+
+        document.addEventListener("click", function(e){
+            console.log(e);
+            console.log(e.target.classList.length);
+
+            var classL = e.target.classList;
+            console.log(classL.length);
+
+            for(let i = 0; i < classL.length; i++){
+                if(classL.item(i) == "btn"){
+                    alert("click");
+                }
+            }
+
+            // if(e.target.className == "btn"){
+            //     alert("click");
+            // }
+        })
+
+        var createBtn = document.querySelector(".create");
+        createBtn.addEventListener("click", function(){
+            var b = document.createElement('button');
+            b.setAttribute('class', 'btn');
+            b.innerText = "버튼생성~";
+
+            var wrap = document.querySelector(".wrap");
+            wrap.appendChild(b);
+        })
+
+        var inp = document.querySelector(".inp");
+        inp.addEventListener("focus", function(e){
+            console.log(e)
+
+            // if(e.which == 13){
+            //     alert("엔터키입력")
+            // }
+        })
+    </script>
+</body>
+</html>

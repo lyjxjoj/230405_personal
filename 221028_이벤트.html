@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이벤트</title>
+</head>
+
+<style>
+	* {padding: 0; margin: 0; vertical-align: middle;}
+	div {margin: 20px 0;}
+	h3 {display: inline-block; background-color: darkgreen; color:#fff;}
+	h4 {color: darkgreen;}
+	button {display: block; padding: 5px 20px; margin: 10px;}
+	button:hover {background-color: #777;}
+
+	#divBox,  #divBox2, #divBox2, #divBox3 ,#divBox4 { width: 400px; height: 100px; border: 2px solid red; }
+	#paraBox, #paraBox2 #paraBox2, #paraBox3, #paraBox4 { width: 80%; height: 50px; border: 2px solid orange; }
+	#spanBox, #spanBox2 #spanBox2, #linkBox3, #linkBox4 { border: 2px solid green; }
+
+
+</style>
+<body>
+	<div>
+		<h3>이벤트 타입(event type)</h3>
+		<p onclick="changeText(this)">이 문자열을 클릭해 보세요!</p>
+	</div>
+	<script>
+		function changeText(element) {
+			element.innerHTML = "문자열의 내용이 바뀌었습니다!";
+		}
+	</script>
+
+	<div>
+		<h3>이벤트 리스너</h3>
+		<h4>객체나 요소에 프로퍼티로 등록하는 방법</h4>
+		<p id="txt0"></p>
+		<p onclick="alert('문자열을 클릭했어요!')">이 문자열을 클릭해 보세요!</p>
+	</div>
+	<script>
+		window.onload = function(){		// window.onload : HTML문서가 로드될 때 실행됨
+			var text = document.getElementById("txt0");
+			text.innerHTML = "HTML 문서가 로드되었습니다."
+		}
+	</script>
+
+	<div>
+		<h4>객체나 요소의 메소드에 이벤트 리스너를 전달하는 방법</h4>
+		<p>대상객체.addEventListener(이벤트명, 실행할이벤트리스너, 이벤트전파방식)</p>
+		<p>이벤틀 ㅣ스너를 프로퍼티로 등록할 때는 "on"이 붙은 이벤트타입을 사용하지만, addEventListener() 메소드에서는 "on"이 붙지않은 이벤트 타입을 사용해야 합니다.</p>
+		<p id="txt1"></p>
+		<button id="btn1">버튼1</button>
+
+		<h4>여러개의 이벤트 리스너 등록</h4>
+		<p id="txt2"></p>
+		<button id="btn2">버튼2</button>
+		<p id="txt3"></p>
+		<button id="btn3">버튼3</button>
+		<p id="txt4"></p>
+		<button id="btn4">버튼4</button>
+		
+		<h4>이벤트 리스너 삭제</h4>
+	</div>
+	<script>
+		var showBtn = document.getElementById("btn1");
+		showBtn.addEventListener("click", showText);
+		function showText(){
+			document.getElementById("txt1").innerHTML = "짜잔~!! 텍스트가 나타났어요!!";
+		}
+
+		var btn2 = document.getElementById("btn2");
+		var btn3 = document.getElementById("btn3");
+		var btn4 = document.getElementById("btn4");
+
+		btn2.addEventListener("click", clickBtn);
+		btn3.addEventListener("mouseover", mouseoverBtn);
+		btn4.addEventListener("mouseout", mouseoutBtn);
+
+		function clickBtn(){
+			document.getElementById("txt2").innerHTML = "버튼이 클릭됐어요!";
+		}
+		function mouseoverBtn(){
+			document.getElementById("txt3").innerHTML = "버튼 위에 마우스가 있네요!";
+		}
+		function mouseoutBtn(){
+			document.getElementById("txt4").innerHTML = "버튼 밖으로 마우스가 나갔어요!"
+		}
+
+		function clickBtn(){ // 이벤트 리스너 삭제
+			btn.removeEventListener("mouseover", mouseoverBtn);
+			btn.removeEventListener("mouseout", mouseoutBtn);
+			document.getElementById("txt2").innerHTML = "이벤트 리스너가 삭제되었어요!";
+		}
+	</script>
+
+	<div>
+		<h3>이벤트 리스너 호출</h3>
+		<h4>이벤트 객체(enevt object)</h4>
+		<p id="txt5"></p>
+		<button id="btn5">버튼5</button>
+
+		<h3>이벤트 전파(event propagation)</h3>
+		<h4>버블링((bubbling) 전파 방식</h4>
+		<div id="divBox">
+			<p id="paraBox">박스 안의 여러 곳을 <span id="spanBox">클릭</span>해 보세요!</p>
+		</div>
+		<p id="txt6"></p>
+
+		<h4>캡쳐링(capturing) 전파 방식</h4>
+		<p>캡쳐링 전파 방식은 addEventListener() 메소드를 지원하지않는 익스플로러8과 그 이전버전, 오페라 6과 그 이전 버전에서는 사용할 수 없습니다.</p>
+		<div id="divBox2">
+			<p id="paraBox2">박스 안의 여러 곳을 <span id="spanBox2">클릭</span>해 보세요!</p>
+		</div>
+		<p id="txt7"></p>
+
+		<h4>이벤트 기본 동작의 취소</h4>
+		<div id="divBox3">
+			<p id="paraBox3">박스 안의 여러 곳을 <a id="linkBox3" href="/javascript/intro">클릭</a>해 보세요!</p>
+		</div>
+		<p id="txt8"></p>
+
+		<h4>이벤트 전파의 취소</h4>
+		<div id="divBox4">
+			<p id="paraBox4">박스 안의 여러 곳을 <a id="linkBox4" href="/javascript/intro">클릭</a>해 보세요!</p>
+		</div>
+		<p id="txt9"></p>
+
+
+	</div>
+	<script>
+		var btn5 = document.getElementById("btn5");
+		btn5.addEventListener("click", clickBtn);
+		function clickBtn(){
+			document.getElementById("txt5").innerHTML = `이 이벤트의 타입은 [${event.type}]이며, 이벤트의 대상은 [${event.target}]입니다.`;
+		}
+
+		// 각 요소마다 버블링 방식으로 click 이벤트 리스너를 등록함.
+		document.getElementById("divBox").addEventListener("click", clickDiv);
+		document.getElementById("paraBox").addEventListener("click", clickPara);
+		document.getElementById("spanBox").addEventListener("click", clickSpan);
+		function clickDiv(event) {
+			document.getElementById("txt6").innerHTML += "div 요소를 click 하셨네요!<br>"
+		}
+		function clickPara(event) {
+			document.getElementById("txt6").innerHTML += "p 요소를 click 하셨네요!<br>"
+		}
+		function clickSpan(event) {
+			document.getElementById("txt6").innerHTML += "span 요소를 click 하셨네요!<br>"
+		}
+
+		// 각 요소마다 캡쳐링 방식으로 click 이벤트 리스너를 등록함.
+		document.getElementById("divBox2").addEventListener("click", clickDiv2, true);
+		document.getElementById("paraBox2").addEventListener("click", clickPara2, true);
+		document.getElementById("spanBox2").addEventListener("click", clickSpan2, true);
+
+		function clickDiv2(event) {
+			document.getElementById("txt8").innerHTML += "div 요소를 click 하셨네요!2<br>"
+		}
+		function clickPara2(event) {
+			document.getElementById("txt8").innerHTML += "p 요소를 click 하셨네요!2<br>"
+		}
+		function clickSpan2(event) {
+			document.getElementById("txt8").innerHTML += "span 요소를 click 하셨네요!2<br>"
+		}
+
+
+		// 이벤트 기본 동작의 취소
+		document.getElementById("divBox3").addEventListener("click", clickDiv3, true);
+		document.getElementById("paraBox3").addEventListener("click", clickPara3, true);
+		document.getElementById("linkBox3").addEventListener("click", clickLink3, true);
+		
+		function clickDiv3(event) {
+			document.getElementById("txt8").innerHTML += "div 요소를 click 하셧네요!<br>"
+		}		
+		function clickPara3(event) {
+			document.getElementById("txt8").innerHTML += "p 요소를 click 하셧네요!<br>"
+		}	
+		function clickLink3(event) {
+			event.preventDefault(); // 링크의 기본 동작을 취소함.
+			document.getElementById("txt8").innerHTML += "링크의 기본 동작을 막았어요!<br>"
+			document.getElementById("txt8").innerHTML += "a 요소를 click 하셨네요!<br>"
+		}
+
+		document.getElementById("divBox4").addEventListener("click", clickDiv4);
+		document.getElementById("paraBox4").addEventListener("click", clickPara4);
+		document.getElementById("linkBox4").addEventListener("click", clickLink4);
+		
+		function clickDiv4(event) {
+			document.getElementById("txt9").innerHTML += "div 요소를 click 하셧네요!<br>"
+		}		
+		function clickPara4(event) {
+			document.getElementById("txt9").innerHTML += "p 요소를 click 하셧네요!<br>"
+		}	
+		function clickLink4(event){
+			event.preventDefault(); // 링크의 기본 동작을 취소함.
+			document.getElementById("txt9").innerHTML += "링크의 기본 동작을 막았어요!<br>"
+			event.stopPropagation(); // 이벤트의 전파를 취소함.
+			document.getElementById("txt9").innerHTML += "이벤트의 전파를 막았어요!<br>"
+		}
+
+	</script>
+	
+
+</body>
+</html>
