@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.color1 {
+  background-color: pink;
+}
+.color2 {
+  background-color: lightgoldenrodyellow;
+}
+.color3 {
+  background-color: lightgreen;
+}
+.color4 {
+  background-color: lightblue;
+}
+.color5 {
+  background-color: lightgray;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  /* grid-template-rows: 100px 200px repeat(2, 100px); */
+  grid-auto-rows: minmax(150px, auto); /* 콘텐츠가 있ㅇㄹ땐 */
+  grid-gap: 10px; /* 요소간의 간격 */
+  padding: 10px;
+}
