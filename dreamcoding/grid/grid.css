@@ -32,9 +32,10 @@ body {
 
 .container {
   display: grid;
+  /**/
   grid-template-columns: repeat(5, 1fr);
   /* grid-template-rows: 100px 200px repeat(2, 100px); */
-  grid-auto-rows: minmax(150px, auto); /* 콘텐츠가 있ㅇㄹ땐 */
+  grid-auto-rows: minmax(150px, auto); /* 콘텐츠가 있을땐 min(150px) max(auto) */
   grid-gap: 10px; /* 요소간의 간격 */
   padding: 10px;
 }
