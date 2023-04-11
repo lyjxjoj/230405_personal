@@ -10,10 +10,12 @@
         margin: 0;
         padding: 0;
       }
+      html,
       body {
+        scroll-behavior: smooth;
         background-color: #444;
       }
-      div {
+      .box_set div {
         display: block;
         width: 100px;
         height: 100px;
@@ -21,33 +23,59 @@
         border-radius: 10px;
         margin: 10px 10px 0;
       }
-      .special {
+      .box_set .special {
         background-color: lightsalmon;
+      }
+      .btn_set {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1;
+        display: flex;
+      }
+      button {
+        margin-left: 10px;
+        padding: 3px 10px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+      }
+      button:focus {
+        border: none;
+        outline: none;
       }
     </style>
   </head>
   <body>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div class="special"></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div class="btn_set">
+      <button class="btn_by">Scroll by 100px(y)</button>
+      <button class="btn_to">Scroll to 100px(y)</button>
+      <button class="btn_special">Scroll into special</button>
+    </div>
+    <div class="box_set">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div class="special"></div>
+      <div></div>
+      <div class="scroll_box"></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </body>
   <script>
     const special = document.querySelector(".special");
 
+    // click event - coordinates
     special.addEventListener("click", (event) => {
       const rect = special.getBoundingClientRect();
       console.log(rect);
@@ -55,6 +83,31 @@
       console.log(`page: ${event.pageX}, ${event.pageY}`);
       console.log(`screen: ${event.screenX}, ${event.screenY}`);
       console.log(`offset: ${event.offsetX}, ${event.offsetY}`);
+    });
+
+    // scroll event
+    let scrollBy = document.querySelector(".btn_by");
+    let scrollTo = document.querySelector(".btn_to");
+    let scrollInto = document.querySelector(".btn_special");
+
+    scrollBy.addEventListener("click", () => {
+      scrollBy.style.backgroundColor = "yellow";
+      // window.scrollBy(0, 100);
+      window.scrollBy({
+        top: 100,
+        left: 0,
+      });
+    });
+    scrollTo.addEventListener("click", () => {
+      scrollTo.style.backgroundColor = "yellow";
+      window.scrollTo(0, 100);
+    });
+    scrollInto.addEventListener("click", () => {
+      special.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
     });
   </script>
 </html>
