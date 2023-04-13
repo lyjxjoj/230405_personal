@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>좌표</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        background-color: #222;
+      }
+      .target {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        width: 120px;
+        height: 120px;
+        background: url(img/target.png) no-repeat center center;
+        background-size: contain;
+      }
+      .target::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: #fff;
+      }
+      .target::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+        display: block;
+        width: 1px;
+        height: 100%;
+        background-color: #fff;
+      }
+      .target p {
+        display: inline-block;
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="target">
+      <img src="img/target.png" alt="" />
+      <p>X: <span class="x"></span>px,</p>
+      <p>Y: <span class="y"></span>px</p>
+    </div>
+  </body>
+  <script>
+    let target = document.querySelector(".target");
+    let pageX = document.querySelector(".target .x");
+    let pageY = document.querySelector(".target .y");
+
+    function pageCoor(event) {
+      pageX.innerText = event.pageX;
+      pageY.innerText = event.pageY;
+    }
+
+    window.addEventListener("mousemove", pageCoor, true);
+  </script>
+</html>
