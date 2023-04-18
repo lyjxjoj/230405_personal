@@ -13,68 +13,72 @@
       html,
       body {
         height: 100%;
-        background-color: #222;
+        background-color: #111;
       }
       .target {
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 50%;
+        left: 50%;
         z-index: 999;
+        transform: translate(-50%, -50%);
+      }
+      .target .point {
+        display: block;
         width: 120px;
         height: 120px;
         background: url(img/target.png) no-repeat center center;
-        background-size: contain;
+        background-size: 120px 120px;
       }
-      .target::before {
-        content: "";
+      .line {
         position: absolute;
-        top: 50%;
-        left: 50%;
         z-index: 0;
-        transform: translate(-50%, -50%);
         display: block;
-        width: 100%;
-        height: 1px;
         background-color: #fff;
       }
-      .target::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        z-index: 0;
-        transform: translate(-50%, -50%);
-        display: block;
+      .line.x {
+        left: 0;
         width: 1px;
         height: 100%;
-        background-color: #fff;
       }
-      .target p {
-        display: inline-block;
+      .line.y {
+        top: 0;
+        width: 100%;
+        height: 1px;
+      }
+      .txt {
+        position: absolute;
+        top: calc(50% + 20px);
+        left: calc(50% + 20px);
+        z-index: 0;
         color: #fff;
+        font-family: serif;
         font-weight: 700;
         font-size: 16px;
         margin-right: 5px;
+        white-space: nowrap;
       }
     </style>
   </head>
   <body>
+    <div class="line x"></div>
+    <div class="line y"></div>
     <div class="target">
-      <img src="img/target.png" alt="" />
-      <p>X: <span class="x"></span>px,</p>
-      <p>Y: <span class="y"></span>px</p>
+      <div class="point"></div>
+      <p class="txt">hello</p>
     </div>
   </body>
   <script>
+    let lineX = document.querySelector(".line.x");
+    let lineY = document.querySelector(".line.y");
     let target = document.querySelector(".target");
-    let pageX = document.querySelector(".target .x");
-    let pageY = document.querySelector(".target .y");
+    let txt = document.querySelector(".target .txt");
 
-    function pageCoor(event) {
-      pageX.innerText = event.pageX;
-      pageY.innerText = event.pageY;
-    }
-
-    window.addEventListener("mousemove", pageCoor, true);
+    window.addEventListener("mousemove", (e) => {
+      lineX.style.left = `${e.pageX}px`;
+      lineY.style.top = `${e.pageY}px`;
+      target.style.left = `${e.pageX}px`;
+      target.style.top = `${e.pageY}px`;
+      txt.innerHTML = `${e.pageX}px, ${e.pageY}px`;
+    });
   </script>
 </html>
