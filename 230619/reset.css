@@ -1,0 +1,90 @@
+/**
+Last Updated:2023-03-08
+Author:Neoreve
+*/
+
+/* default */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li, a,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	vertical-align:middle;
+	background:transparent;
+	box-sizing:border-box;
+	-webkit-text-size-adjust:none;
+}
+body {
+	color:#000;
+	font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+	font-style:normal;
+	font-weight:400;
+	font-size:1rem;
+	line-height:1;
+	word-break:keep-all;
+}
+*:before, *:after {
+	-webkit-transition:inherit;
+	-moz-transition:inherit;
+	-o-transition:inherit;
+	transition:inherit;
+}
+
+/* block */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,a {display:block;}
+
+/* inline */
+span, strong, em {vertical-align:baseline;}
+em, address {font-style:normal;}
+mark {color:inherit;}
+
+
+/* img */
+img {
+	width:100%; display:inline-block; vertical-align:middle;
+	-ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='crop')"; // for IE8
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='crop'); // for IE7
+}
+
+/* anchor */
+a {color:inherit; vertical-align:baseline; text-decoration:none; background:transparent;}
+a:active, a:focus, a:hover {text-decoration:none; outline:none;}
+
+
+/* button */
+button {color:inherit; font:inherit; letter-spacing:inherit; padding:0; border:none; border:0; outline:none; outline:0; background:none; -webkit-appearance:none; appearance:none; border-radius:0; cursor:pointer;}
+
+
+/* input */
+input[type=text], input[type=password], input[type=tel], input[type=email], input[type=number], textarea {padding:0; border:0; box-sizing:border-box; -webkit-appearance:none; -moz-appearance:none; appearance:none; color:inherit; font:inherit; letter-spacing:inherit;}
+input[type=text]:focus, input[type=password]:focus, input[type=tel]:focus, input[type=email]:focus, input[type=number]:focus, textarea:focus {outline:0;}
+input[type=button], input[type=submit], input[type=reset], input[type=image] {cursor:pointer;}
+textarea {resize:none;}
+
+
+/* list-style */
+ol, ul {list-style:none;}
+li {list-style:none; vertical-align:top; line-height:inherit;}
+blockquote, q {quotes:none;}
+blockquote:before, blockquote:after, q:before, q:after {content:''; content:none;}
+
+
+/* table */
+table {border-collapse:collapse; border-spacing:0;}
+fieldset {border:0;}
+legend, caption, hr {position:absolute; left:-9999px; top:0; visibility:hidden; overflow:hidden; line-height:0.1%; font-size:0.1%; width:0.1%; height:0.1%;}
+
+
+/* ADD CSS*/
+.blind {overflow:hidden; position:absolute; clip:rect(0, 0, 0, 0); width:1px; height:1px; margin:-1px;}

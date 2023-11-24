@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<meta property="og:title" content="">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:description" content="">
+	<meta name="viewport"
+	      content="width=device-width,initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+</head>
+<style>
+	section {position: relative;height:100vh;transition: all 1s ease;}
+	.section01 {background: burlywood;}
+	.section02 {background: #a0c99f;}
+	.section03 {background: #a0c0d8;}
+	.section04 {background: thistle;}
+
+
+	.section01.show {background: #a0c0d8;}
+	.section02.show {background: thistle;}
+	.section03.show {background: burlywood;}
+	.section04.show {background: #a0c99f;}
+
+	section::after {content:'😍';position:absolute;left: 50%;top: 50%;z-index: 1;font-size: 6em;opacity: 0;transform: translate(-50%, calc(-50% + 20px));transition: all 1s ease;}
+	section.show::after {opacity: 1;transform: translate(-50%, -50%);}
+
+</style>
+
+<body>
+<main class="wrap">
+	<section class="section01"></section><!--section01-->
+	<section class="section02"></section><!--section02-->
+	<section class="section03"></section><!--section03-->
+	<section class="section04"></section><!--section04-->
+</main><!--wrap-->
+
+<script>
+	/*
+	* 모든 섹션에 적용되는 이벤트
+	* */
+	// window.addEventListener('scroll', function() {
+	// 	var windowHeight = window.innerHeight;
+	// 	var scrollPosition = window.scrollY + windowHeight / 2;
+	//
+	// 	var sections = document.querySelectorAll('section');
+	//
+	// 	sections.forEach(function(section) {
+	// 		var sectionTop = section.offsetTop;
+	//
+	// 		// 섹션의 시작점이 사용자 화면의 중앙에 위치하는지 확인
+	// 		if (scrollPosition >= sectionTop) {
+	// 			section.classList.add('show');
+	// 		} else {
+	// 			section.classList.remove('show');
+	// 		}
+	// 	});
+	// });
+
+
+	/*
+	* 특정 섹션에 적용되는 이벤트
+	* */
+	// window.addEventListener('scroll', function() {
+	// 	var windowHeight = window.innerHeight;
+	// 	var scrollPosition = window.scrollY + windowHeight / 2;
+	//
+	// 	var section02 = document.querySelector('.section02');
+	// 	var section04 = document.querySelector('.section04');
+	//
+	// 	if (scrollPosition >= section02.offsetTop) {
+	// 		section02.classList.add('show');
+	// 	} else {
+	// 		section02.classList.remove('show');
+	// 	}
+	//
+	// 	if (scrollPosition >= section04.offsetTop) {
+	// 		section04.classList.add('show');
+	// 	} else {
+	// 		section04.classList.remove('show');
+	// 	}
+	// });
+
+
+	/*
+	* 위 코드를 간결하게 줄인 것
+	* */
+	// window.addEventListener('scroll', function() {
+	// 	var windowHeight = window.innerHeight;
+	// 	var scrollPosition = window.scrollY + windowHeight / 2;
+	//
+	// 	toggleSectionClass('.section02', scrollPosition);
+	// 	toggleSectionClass('.section04', scrollPosition);
+	// });
+	//
+	// function toggleSectionClass(sectionSelector, scrollPosition) {
+	// 	var section = document.querySelector(sectionSelector);
+	//
+	// 	if (scrollPosition >= section.offsetTop) {
+	// 		section.classList.add('show');
+	// 	} else {
+	// 		section.classList.remove('show');
+	// 	}
+	// }
+
+
+	/*
+	* 제이쿼리로 작성한 것
+	* */
+	// $(window).scroll(function() {
+	// 	var windowHeight = $(window).height();
+	// 	var scrollPosition = $(window).scrollTop() + windowHeight / 2;
+	//
+	// 	if (scrollPosition >= $('.section02').offset().top) {
+	// 		$('.section02').addClass('show');
+	// 	} else {
+	// 		$('.section02').removeClass('show');
+	// 	}
+	//
+	// 	if (scrollPosition >= $('.section04').offset().top) {
+	// 		$('.section04').addClass('show');
+	// 	} else {
+	// 		$('.section04').removeClass('show');
+	// 	}
+	// });
+
+
+
+	// 간결한 코드 1
+	// $(window).scroll(function() {
+	// 	var windowHeight = $(window).height();
+	// 	var scrollPosition = $(window).scrollTop() + windowHeight / 2;
+	//
+	// 	$('.section02').toggleClass('show', scrollPosition >= $('.section02').offset().top);
+	// 	$('.section04').toggleClass('show', scrollPosition >= $('.section04').offset().top);
+	// });
+
+
+	// 간결한 코드 2
+	$(window).scroll(function() {
+		var windowHeight = $(window).height();
+		var scrollPosition = $(window).scrollTop() + windowHeight / 2;
+
+		toggleSectionClass('.section02', scrollPosition);
+		toggleSectionClass('.section04', scrollPosition);
+	});
+
+	function toggleSectionClass(sectionSelector, scrollPosition) {
+		var section = $(sectionSelector);
+
+		if (scrollPosition >= section.offset().top) {
+			section.addClass('show');
+		} else {
+			section.removeClass('show');
+		}
+	}
+
+</script>
+</body>
+</html>

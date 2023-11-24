@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" type="text/css" href="reset.css">
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+</head>
+	<style>
+		body {height: 100%;}
+
+		.section {
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 2em;
+		}
+
+		#section2 {
+			height: 300vh;
+			background: #eee;
+			transition: all 0.5s ease;
+		}
+		#section2[data-num="1"] {background: pink}
+		#section2[data-num="2"] {background: skyblue}
+		#section2[data-num="3"] {background: lightgreen}
+	</style>
+<body>
+<div id="section1" class="section">Section 1</div>
+<div id="section2" class="section" data-num="0">Section 2</div>
+<div id="section3" class="section">Section 3</div>
+
+<script>
+	/*
+	* 스크롤 위치에 따라 섹션의 data 값이 변화하는 자바스크립트
+	* */
+
+	// // Get the section and data elements
+	// const section2 = document.getElementById('section2');
+	//
+	// // Calculate the heights for each data point
+	// const sectionHeight = section2.offsetHeight;
+	// const thirdHeight = sectionHeight / 3;
+	// const windowHeight = window.innerHeight;
+	// const middlePosition = windowHeight / 2;
+	//
+	// // Function to update data-num based on scroll position
+	// function updateDataNum() {
+	// 	const scrollPosition = window.scrollY + middlePosition;
+	// 	const sectionOffset = section2.offsetTop;
+	// 	const relativeScroll = scrollPosition - sectionOffset;
+	//
+	// 	if (relativeScroll >= 0 && relativeScroll < sectionHeight) {
+	// 		const dataNum = Math.ceil(relativeScroll / thirdHeight);
+	// 		section2.dataset.num = dataNum;
+	// 	}
+	// }
+	//
+	// // Call the function on scroll
+	// window.addEventListener('scroll', updateDataNum);
+	//
+	// // Call the function initially to set data-num value
+	// updateDataNum();
+
+
+	/*
+	* 조금 더 쉽고 간결
+	* */
+	// const section2 = document.getElementById('section2');
+	//
+	// window.addEventListener('scroll', () => {
+	// 	const scrollPosition = window.scrollY + (window.innerHeight / 2);
+	// 	const sectionTop = section2.offsetTop;
+	// 	const sectionBottom = sectionTop + section2.offsetHeight;
+	// 	const sectionHeight = sectionBottom - sectionTop;
+	// 	const dataNum = Math.ceil((scrollPosition - sectionTop) / (sectionHeight / 3));
+	//
+	// 	if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+	// 		section2.setAttribute('data-num', dataNum);
+	// 	}
+	// });
+
+
+	/*
+	* 제이쿼리
+	* */
+	$(document).ready(function() {
+		const $section2 = $('#section2');
+
+		$(window).scroll(function() {
+			const scrollPosition = $(window).scrollTop() + $(window).height() / 2;
+			const sectionOffset = $section2.offset().top;
+			const sectionHeight = $section2.outerHeight();
+			const dataNum = Math.ceil((scrollPosition - sectionOffset) / (sectionHeight / 3));
+
+			if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
+				$section2.attr('data-num', dataNum);
+			}
+		});
+	});
+</script>
+</body>
+</html>

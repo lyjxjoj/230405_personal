@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <div class="gradient"></div>
+    <script>
+        // 이벤트를 연결합니다.
+        window.onload = function(){
+        // 그라디언트 만들기
+            // 문서 객체를 추가합니다.
+            var output = '';
+            for(var i=0;i<256;i++){
+                output += '<div></div>';
+            }
+            document.querySelector('.gradient').innerHTML = output;
+
+            // 문서 객체를 선택합니다.
+            var divs = document.querySelectorAll('div');
+            for(var i=0;i<divs.length;i++){
+                // 변수를 선언합니다.
+                var div = divs[i];
+
+                // 스타일을 적용합니다.
+                div.style.height = '1px';
+                div.style.background = 'rgb(' + i + ',' + i +',' + i + ')';
+            }
+        }
+    </script>
+    <!--
+    <img src="" alt="" id="image">
+    <script>
+        // 이미지 속성 조작
+        window.onload = function(){
+            // 변수를 선언합니다.
+            var image = document.getElementById('image');
+
+            // 속성은 변경합니다.
+            image.src = 'http://placehold.it/300x200';
+            image.width = '300';
+            image.height = '200';
+        }
+    </script>
+
+    <div class="data_container"></div>
+    <script>
+        // 데이터값을 이용하여 속성 조작
+        window.onload = function(){
+            document.querySelector('.data_container').setAttribute('data-custom', 'value');
+
+            // 속성을 추출합니다.
+            var dataCustom = document.querySelector('.data_container').getAttribute('data-custom');
+            console.log(dataCustom);
+        }
+    </script> -->
+
+    <!-- <div id="clock"></div>
+    <script>
+        // 이벤트를 연결합니다.
+        window.onload = function(){
+            // 변수를 선언
+            var clock = document.getElementById('clock');
+
+            // 1초마다 함수를 실행
+            setInterval(function(){
+                var now = new Date();
+                clock.innerHTML = now.toString();
+            }, 1000);
+        }
+    </script> -->
+
+    <!-- <button id="button" onclick="alert('click')">버튼</button>
+    <script>
+        // 이벤트 연결
+        window.onload = function(){
+            // 문서객체 선택
+            var button = document.getElementById('button');
+            // 이벤트 연결
+            button.onclick = function(){
+                alert('click2.script')
+            };
+        }
+    </script> -->
+
+    <!-- <script>
+        window.onload = function(e){
+            var event;
+            if(e){
+                // 매개변수 e가 있는 경우 : 현대 웹 브라우저
+                event = e;
+                console.log(e + '뿡');
+            }else{
+                // 매개변수 e가 없는 경우 : 구 버전의 인터넷 익스플로러
+                event = window.event;
+                console.log(event + '뿌웅');
+            }
+        }
+    </script> -->
+
+    <a href="http://hanb.co.kr" id="button">버튼버튼</a>
+    <script>
+        window.onload = function(){
+            var button = document.getElementById('button');
+            button.onclick = function(){
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

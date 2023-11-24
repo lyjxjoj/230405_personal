@@ -1,0 +1,9 @@
+.blind {overflow:hidden; position:absolute; clip:rect(0, 0, 0, 0); width:1px; height:1px; margin:-1px;}
+
+:root {
+  --col-gr: #009223;
+  --col-yel: #ffce32;
+}
+
+.header {border-top: 5px solid var(--col-gr);}
+.header .logo {width: 202px;height: 40px;background: url("../images/logo_w.png") no-repeat center center;background-size: contain;}
